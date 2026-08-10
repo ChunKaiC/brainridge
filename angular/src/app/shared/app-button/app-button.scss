@@ -1,0 +1,11 @@
+.app-button {
+  border-radius: 10px;
+  background-color: gray;
+  padding: 0.75rem 1.5rem;
+}
+.app-button.chequing {
+  background-color: var(--account-chequing);
+}
+.app-button.savings {
+  background-color: var(--account-savings);
+}

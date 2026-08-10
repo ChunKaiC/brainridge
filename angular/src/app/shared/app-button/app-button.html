@@ -1,0 +1,10 @@
+<button
+  (click)="clicked.emit()"
+  type="button"
+  [disabled]="disabled()"
+  [class.chequing]="variant() === 'chequing'"
+  [class.savings]="variant() === 'savings'"
+  class="app-button"
+>
+  {{ label() }}
+</button>
