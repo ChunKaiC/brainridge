@@ -1,0 +1,28 @@
+mat-card {
+  max-width: 400px;
+  width: 100%;
+  min-height: 300px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 1rem;
+  border-radius: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.error {
+  width: 100%;
+  margin: -0.75rem 0 0 0;
+  color: var(--mat-sys-error);
+  font-size: 12px;
+  line-height: 1.2;
+}
