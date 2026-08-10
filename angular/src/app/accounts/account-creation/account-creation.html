@@ -1,0 +1,29 @@
+<mat-card>
+  <h2>Create Account</h2>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label> Account Name </mat-label>
+      <input matInput type="text" formControlName="name" />
+      <mat-error>Name must be 1-30 characters long</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label> Initial Balance </mat-label>
+      <input matInput type="number" formControlName="initialBalance" />
+      <mat-error>Initial balance must be greater than 0</mat-error>
+    </mat-form-field>
+
+    <mat-radio-group formControlName="accountType">
+      <mat-radio-button value="chequing"> Chequing </mat-radio-button>
+      <mat-radio-button value="savings"> Savings </mat-radio-button>
+    </mat-radio-group>
+    @if (form.controls.accountType.value !== '') {
+      <app-button
+        [variant]="selectedType"
+        label="Submit"
+        (clicked)="onSubmit()"
+        [disabled]="form.invalid"
+      ></app-button>
+    }
+  </form>
+</mat-card>
