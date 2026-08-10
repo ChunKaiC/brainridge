@@ -1,0 +1,39 @@
+@if (account(); as acc) {
+  <h2>Account Details</h2>
+  <mat-card>
+    <p>
+      <strong>{{ acc.name }}</strong> · {{ acc.type | titlecase }} · {{ acc.balance | currency }}
+    </p>
+    <p>{{ acc.id }}</p>
+  </mat-card>
+
+  <h2>Transaction records</h2>
+  <mat-form-field subscriptSizing="dynamic">
+    <mat-label> Search </mat-label>
+    <input
+      matInput
+      type="text"
+      placeholder="Keywords"
+      [ngModel]="searchTerm()"
+      (ngModelChange)="searchTerm.set($event)"
+    />
+  </mat-form-field>
+  @for (transaction of transactions(); track transaction.id) {
+    <mat-card [class.sent]="transaction.outgoing" [class.received]="!transaction.outgoing">
+      <p>
+        [{{ transaction.date | date: 'fullDate' }}]
+        {{ transaction.outgoing ? 'Sent' : 'Received' }}
+        {{ transaction.amount | currency }}
+        {{ transaction.outgoing ? 'to' : 'from' }}
+        {{ transaction.counterparty }}
+        @if (transaction.notes) {
+          — "{{ transaction.notes }}"
+        }
+      </p>
+    </mat-card>
+  } @empty {
+    <p>No Transaction records found.</p>
+  }
+} @else {
+  <h2>Account not found</h2>
+}

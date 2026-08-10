@@ -1,0 +1,22 @@
+mat-card {
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+
+  cursor: pointer;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+mat-card.chequing {
+  --mat-card-elevated-container-color: var(--account-chequing);
+}
+
+mat-card.savings {
+  --mat-card-elevated-container-color: var(--account-savings);
+}
+
+.account-link {
+  text-decoration: none;
+}

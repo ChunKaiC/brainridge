@@ -1,0 +1,19 @@
+@if (accounts().length) {
+  <h2>All available accounts:</h2>
+} @else {
+  <h2>No accounts available</h2>
+}
+@for (account of accounts(); track account.id) {
+  <a [routerLink]="['/accounts', account.id, 'history']" class="account-link">
+    <mat-card
+      [class.chequing]="account.type === 'chequing'"
+      [class.savings]="account.type === 'savings'"
+    >
+      <mat-icon>link</mat-icon>
+      <span>[{{ account.id.substring(0, 5) }}]</span>
+      <span>{{ account.name }}</span>
+      <span>{{ account.type | titlecase }}</span>
+      <span>{{ account.balance | currency }}</span>
+    </mat-card>
+  </a>
+}
